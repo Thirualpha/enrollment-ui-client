@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
 import { BrowserRouter as Router,Route,Routes,Link } from 'react-router-dom'
 import EnrollComponent from './Components/routes/EnrollComponent/EnrollComponent'
@@ -16,7 +15,7 @@ function App() {
     <Router>
     <div className='container'>
       <div >
-          <Link to = {'/enroll'}>
+          <Link to = {'/signup'}>
                saveetha | Enrollment
           </Link>
       </div>

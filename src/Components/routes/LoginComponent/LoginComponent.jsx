@@ -1,4 +1,5 @@
 
+import axios from 'axios'
 import React, { useState } from 'react'
 
 import { Link } from 'react-router-dom'
@@ -19,10 +20,22 @@ const LoginComponent = () => {
 const submitHandler = (event) =>{
         event.preventDefault()
         console.log(regno, password)
+
+        axios
+        .post(`http://localhost:3500/api/v1/login`,
+        {
+            regno : regno,
+            password : password
+        })
+        .then(response => console.log(response.data))
+        .catch(error => console.log(error.response.data))
+
 }
+
+
   return (
     <React.Fragment>
-    <h1>Login</h1>
+    <h1>LOGIN</h1>
     <form onSubmit={submitHandler}>
 
     <div className='login-class'>
@@ -30,7 +43,7 @@ const submitHandler = (event) =>{
           <input
               type='text'
              
-              placeholder='Enter your email address'
+              placeholder='Enter your RegisterNumber'
               value={regno}
               onChange={regnoHandler}
               required
@@ -71,7 +84,7 @@ const submitHandler = (event) =>{
         </p>
 
         <p >
-          New User? <Link to='/signup'>Register here!</Link>
+          New User? <Link to='/enroll'>Register here!</Link>
         </p>
 
       </div>

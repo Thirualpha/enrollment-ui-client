@@ -4,10 +4,15 @@ import { Link } from 'react-router-dom'
 
 const EnrollComponent = () => {
 
+    const [regno,setRegno] = useState('')
     const [firstname,setFirstname] =useState('')
     const [lastname,setLastname] = useState('')
     const [email , setEmail] = useState('')
     const [ password,setPassword] = useState('')
+
+    const regNoHandler = (event) =>{
+        setRegno(event.target.value)
+    }
   
     const firstNameHandler = (event) =>{
       setFirstname(event.target.value)
@@ -27,12 +32,13 @@ const EnrollComponent = () => {
   
     const formSubmitHandler = (event) =>{
       event.preventDefault()
-      console.log(firstname,lastname,email,password)
+      console.log(regno,firstname,lastname,email,password)
 
 
       axios
-      .post(`http://localhost:3500/api/v1/signup`,
-      {firstname: firstname,
+      .post(`http://localhost:3500/api/v1/enroll`,
+      {regno:regno,
+        firstname: firstname,
         lastname:lastname,
         email : email,
         password : password})
@@ -44,7 +50,16 @@ const EnrollComponent = () => {
     // <div>EnrollComponent</div>
     <React.Fragment>
       <form onSubmit={formSubmitHandler}>
-        <h1>SIGN UP</h1>
+        <h1>ENROLL</h1>
+
+        <div>
+          <label>Register Number</label>
+          <input type ='text'
+          placeholder = 'Enter your Registernumber'
+          value = {regno}
+          onChange ={regNoHandler}
+          required/>
+        </div>
 
         <div>
           <label>First Name</label>
@@ -105,21 +120,3 @@ const EnrollComponent = () => {
 
 export default EnrollComponent
 
-
-
-
-// import axios from 'axios'
-// import React, { useState } from 'react'
-// import { Link } from 'react-router-dom'
-
-// const Signinroutecomponent = () => {
- 
-   
-//   }
-
-
-//   return (
-//       )
-// }
-
-// export default Signinroutecomponent
